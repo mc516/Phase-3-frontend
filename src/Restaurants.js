@@ -14,7 +14,12 @@ function Restaurants() {
     return (
         <div>
             <h1>Restaurants</h1>
-            { restaurants.map( restaurant => { return <RestaurantCard />})}
+            { restaurants.map( restaurant => { 
+                return <RestaurantCard 
+                    key={restaurant.id}
+                    restaurantinfo={restaurant} />
+                })
+            }
         </div>
     )
 }

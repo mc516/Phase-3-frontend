@@ -15,3 +15,13 @@ body {
   padding-bottom: 100px;
  
 }
+
+.restaurant-card {
+  border-style: solid;
+  width: 75%;
+  margin: auto;
+  margin-bottom: 50px;
+  border-width: 1px;
+  padding: 25px;
+  position: relative;
+}
