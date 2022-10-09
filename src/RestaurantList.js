@@ -3,7 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import NewRestaurant from   "./NewRestaurant"
 import { useState, useEffect} from 'react'
 
-function Restaurants() {
+function RestaurantList() {
     const [restaurants, setRestaurants] = useState([])
     const [isClicked, setIsClicked] = useState(false)
 
@@ -18,6 +18,10 @@ function Restaurants() {
         // e.currentTarget.disabled = true
         setIsClicked((isClicked) => !isClicked)
     }
+
+    function addRestaurant(NewRestaurant){
+        setRestaurants([...restaurants, NewRestaurant])
+    }
         
     return (
         <div>
@@ -30,9 +34,9 @@ function Restaurants() {
             }
 
             {<button onClick={handleClick}>add new</button>}
-            { isClicked ? <NewRestaurant /> : null}
+            { isClicked ? <NewRestaurant addRestaurant={addRestaurant}/> : null}
         </div>
     )
 }
 
-export default Restaurants
+export default RestaurantList

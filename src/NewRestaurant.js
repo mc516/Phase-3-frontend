@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react"
 
-function NewRestaurant() {
+function NewRestaurant( {addRestaurant} ) {
     const [restaurant, setRestaurant] = useState({
         name: "",
         location: "",
@@ -25,9 +25,16 @@ function NewRestaurant() {
             body: JSON.stringify(restaurant)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(NewRestaurant => {
+                console.log(NewRestaurant)
+                addRestaurant(NewRestaurant)
+                setRestaurant({
+                    name: "",
+                    location: "",
+                })
+            })
     }
-    
+
     return (
         <div>
             <form className="form" onSubmit={handleSubmit}>

@@ -1,9 +1,8 @@
 import './App.css';
 import Home from './Home';
 import NavBar from './NavBar'
-import Restaurants from './Restaurants'
+import RestaurantList from './RestaurantList'
 import {Routes, Route} from "react-router-dom"
-import {useEffect} from 'react'
 
 function App() {
   return (
@@ -11,7 +10,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/restaurants" element={<RestaurantList />} />
        
       </Routes>
       
