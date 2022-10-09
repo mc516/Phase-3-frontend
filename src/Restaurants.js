@@ -15,7 +15,7 @@ function Restaurants() {
 
     function handleClick(e) {
         console.log('click')
-        e.currentTarget.disabled = true
+        // e.currentTarget.disabled = true
         setIsClicked((isClicked) => !isClicked)
     }
         

@@ -16,7 +16,7 @@ body {
  
 }
 
-.restaurant-card {
+.restaurant-card, .form {
   border-style: solid;
   width: 75%;
   margin: auto;
@@ -25,3 +25,4 @@ body {
   padding: 25px;
   position: relative;
 }
+
