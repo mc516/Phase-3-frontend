@@ -36,6 +36,7 @@ function RestaurantList() {
         setRestaurants([...restaurants, NewRestaurant])
     }
         
+   
     return (
         <div>
             <h1>Restaurants</h1>
@@ -46,6 +47,7 @@ function RestaurantList() {
                     reviews={reviews}
                     restaurantinfo={restaurant} 
                     clients={clients}
+                  
                     />
                 })
             }

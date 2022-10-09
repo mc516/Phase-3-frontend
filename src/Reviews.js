@@ -1,8 +1,12 @@
 import React from "react";
+import EditReview from "./EditReview"
 import { useEffect, useState } from "react"
 
 function Reviews( {reviews, restaurantinfo, clients} ) {
-    const [isClicked, setIsClicked] = useState(false)
+  
+
+    const [isReviewClicked, setIsReviewClicked] = useState(false)
+    const [isEdit, setIsEdit] = useState(false)
     
     const reviewsToDisplay = reviews.filter((review) => {return review.restaurant_id === restaurantinfo.id})
 
@@ -13,31 +17,53 @@ function Reviews( {reviews, restaurantinfo, clients} ) {
 
     // console.log(clientToDisplay)
    
-    function handleClick(e){
+    function handleReviewClick(e){
         e.preventDefault()
-        console.log('click')
-        setIsClicked(true)
+        console.log('add review click')
+        setIsReviewClicked(true)
     }
     
+    function handleEditClick(e){
+        console.log('edit clicked')
+        setIsEdit((isEdit) => !isEdit)
+    }
+
+    function handleDeleteClick(){
+        console.log('delete click')
+    }
 
     return (
         <div>
             <h3 className="reviews">Reviews</h3>
+            <button onClick={handleReviewClick}>Add review</button>
             { 
                 reviewsToDisplay.map((review) => 
                     { return <ol key={review.id} className="reviews">
                         <li> 
-                            {review.rating }/5
-                            <br></br>
-                            {review.comment}   
+                            
+                          
+                            {isEdit ? (
+                                <EditReview review={review} />
+                            ) : (
+                                <span>
+                                    <p>{review.rating}/5</p>
+                                    <p>{review.comment}</p>
+                                </span>
+                            )
+
+
+                            }
+
+                            <button onClick={handleEditClick}>Edit</button>
+                            <button onClick={handleDeleteClick}>Delete</button> 
                         </li>
                         </ol> 
                        
                     }
                 )
-                
+               
             }
-            <button onClick={handleClick}>Add review</button>
+            
         
 
         

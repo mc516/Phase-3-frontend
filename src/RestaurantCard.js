@@ -16,7 +16,7 @@ function RestaurantCard( {restaurantinfo, reviews, clients} ) {
             <div><h2>{name}</h2></div>
             <div><h3>{location}</h3></div>
 
-            {<Reviews reviews={reviews} restaurantinfo={restaurantinfo} clients={clients}/>}
+            {<Reviews reviews={reviews} restaurantinfo={restaurantinfo} clients={clients} />}
 
             
 
