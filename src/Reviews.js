@@ -10,9 +10,21 @@ function Reviews( {reviews, restaurantinfo} ) {
 
     return (
         <div>
-            <h3>reviews</h3>
+            <h3 className="reviews">Reviews</h3>
             { 
-                reviewsToDisplay.map((review) => { return <h3>{review.comment}</h3>}) 
+                reviewsToDisplay.map((review) => 
+                    { return <ol key={review.id} className="reviews">
+                        
+                        <li> 
+                            {review.rating }/5
+                            <br></br>
+                            {review.comment}
+                            </li>
+                        
+
+                    </ol> 
+                    }
+                ) 
             }
 
         </div>

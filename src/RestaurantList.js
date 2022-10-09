@@ -18,7 +18,6 @@ function RestaurantList() {
         fetch("http://localhost:9292/reviews")
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setReviews(data)
         })
     }, [])
