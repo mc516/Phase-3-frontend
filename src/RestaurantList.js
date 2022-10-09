@@ -5,6 +5,7 @@ import { useState, useEffect} from 'react'
 
 function RestaurantList() {
     const [restaurants, setRestaurants] = useState([])
+    const [reviews, setReviews] = useState([])
     const [isClicked, setIsClicked] = useState(false)
 
     useEffect(() => {
@@ -12,6 +13,15 @@ function RestaurantList() {
         .then(res => res.json())
         .then(data => setRestaurants(data))
       }, [])
+
+    useEffect(() => {
+        fetch("http://localhost:9292/reviews")
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            setReviews(data)
+        })
+    }, [])
 
     function handleClick(e) {
         console.log('click')
@@ -29,6 +39,7 @@ function RestaurantList() {
             { restaurants.map( restaurant => { 
                 return <RestaurantCard 
                     key={restaurant.id}
+                    reviews={reviews}
                     restaurantinfo={restaurant} />
                 })
             }

@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Reviews from "./Reviews"
 import { useState } from "react"
 
-function RestaurantCard( {restaurantinfo} ) {
+function RestaurantCard( {restaurantinfo, reviews} ) {
     const {name, location} = restaurantinfo
+    
     const [isClicked, setIsClicked] = useState(false)
+    
 
     function handleClick(e) {
-        console.log("click")
         setIsClicked((isClicked) => !isClicked)
-        console.log(isClicked)
         console.log(restaurantinfo)
     }
 
@@ -22,7 +22,7 @@ function RestaurantCard( {restaurantinfo} ) {
             <div><h2>{name}</h2></div>
             <div><h3>{location}</h3></div>
 
-            {isClicked ? <Reviews /> : null}
+            {isClicked ? <Reviews reviews={reviews} restaurantinfo={restaurantinfo}/> : null}
 
 
         </div>     
