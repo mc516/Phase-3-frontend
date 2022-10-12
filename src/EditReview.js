@@ -2,12 +2,17 @@ import React from "react";
 import {useState} from "react"
 
 function EditReview({review}) {
-   
+    const [newReview, setNewReview] = useState(review)
     
     function handleChange(e){
         console.log(e.target.value)
-       
+        setNewReview({
+            ...newReview,
+            [e.target.name]: e.target.value
+        })
     }
+
+    console.log(newReview)
 
     return (
         <div className="edit-review">
@@ -16,7 +21,7 @@ function EditReview({review}) {
                     type="text"
                     name="rating"
                     autoComplete="off"
-                    value={review.rating}
+                    value={newReview.rating}
                     onChange={handleChange}
                 />
                 <br></br>
@@ -24,7 +29,7 @@ function EditReview({review}) {
                     type="text"
                     name="comment"
                     autoComplete="off"
-                    value={review.comment}
+                    value={newReview.comment}
                     onChange={handleChange}
                 />
                 <input type="submit" value="save"
