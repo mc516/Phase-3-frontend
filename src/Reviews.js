@@ -2,7 +2,7 @@ import React from "react";
 import EditReview from "./EditReview"
 import { useEffect, useState } from "react"
 
-function Reviews( {reviews, restaurantinfo, clients} ) {
+function Reviews( {reviews, restaurantinfo, clients, handleUpdateReview} ) {
   
 
     const [isReviewClicked, setIsReviewClicked] = useState(false)
@@ -43,7 +43,8 @@ function Reviews( {reviews, restaurantinfo, clients} ) {
                             
                           
                             {isEdit ? (
-                                <EditReview review={review} />
+                                <EditReview review={review} handleUpdateReview={handleUpdateReview}
+                                setIsEdit={setIsEdit}/>
                             ) : (
                                 <span>
                                     <p>{review.rating}/5</p>

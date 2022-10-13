@@ -35,6 +35,17 @@ function RestaurantList() {
     function addRestaurant(NewRestaurant){
         setRestaurants([...restaurants, NewRestaurant])
     }
+
+    function handleUpdateReview(updateReview) {
+        const updatedReviews = reviews.map((review) => {
+            if (review.id === updateReview.id) {
+                return updateReview;
+            } else {
+                return review
+            }
+        });
+        setReviews(updatedReviews)
+    }
         
    
     return (
@@ -47,7 +58,7 @@ function RestaurantList() {
                     reviews={reviews}
                     restaurantinfo={restaurant} 
                     clients={clients}
-                  
+                    handleUpdateReview={handleUpdateReview}
                     />
                 })
             }

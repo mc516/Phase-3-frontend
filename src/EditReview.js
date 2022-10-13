@@ -1,7 +1,8 @@
 import React from "react";
 import {useState} from "react"
 
-function EditReview({review}) {
+function EditReview({review, handleUpdateReview, setIsEdit}) {
+    const {id} = review
     const [newReview, setNewReview] = useState(review)
     
     function handleChange(e){
@@ -12,10 +13,29 @@ function EditReview({review}) {
         })
     }
 
-    console.log(newReview)
+    function handleSubmit(e){
+        e.preventDefault()
+        console.log(newReview)
+        fetch(`http://localhost:9292/reviews/${id}`, {
+            method:'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                rating: newReview.rating,
+                comment: newReview.comment
+            })
+        })
+        .then(res => res.json())
+        .then(updatedReview => {handleUpdateReview(updatedReview)})
+        
+        setIsEdit(false)
+    }
+
+   
 
     return (
-        <div className="edit-review">
+        <div className="edit-review" onSubmit={handleSubmit}>
             <form>
                 <input
                     type="text"
@@ -32,8 +52,8 @@ function EditReview({review}) {
                     value={newReview.comment}
                     onChange={handleChange}
                 />
-                <input type="submit" value="save"
-                />
+
+                <input type="submit" value="save"/>
             </form>
         </div>
      
