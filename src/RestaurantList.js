@@ -6,7 +6,7 @@ import { useState, useEffect} from 'react'
 function RestaurantList() {
     const [restaurants, setRestaurants] = useState([])
     const [reviews, setReviews] = useState([])
-    const [clients, setClients] = useState([])
+    
     const [isClicked, setIsClicked] = useState(false)
 
     useEffect(() => {
@@ -57,7 +57,6 @@ function RestaurantList() {
                     key={restaurant.id}
                     reviews={reviews}
                     restaurantinfo={restaurant} 
-                    clients={clients}
                     handleUpdateReview={handleUpdateReview}
                     addReview={addReview}
                     />
