@@ -66,7 +66,7 @@ function Reviews( {reviews, restaurantinfo, clients, handleUpdateReview} ) {
             }
             <br></br>
 
-            {isReviewClicked ? <NewReview /> : null}
+            {isReviewClicked ? <NewReview restaurantinfo={restaurantinfo}/> : null}
             <button onClick={handleReviewClick}>Add review</button>
         
 

@@ -1,21 +1,37 @@
 import React from "react";
 import {useState} from "react"
 
-function NewReview() {
-    const [newReview, setNewReview] = useState({})
+function NewReview({restaurantinfo}) {
+    const {id} = restaurantinfo
+
+    const [newReview, setNewReview] = useState({
+        name: "",
+        rating:"",
+        comment:"",
+        restaurant_id: id,
+    })
 
     function handleChange(e) {
-        console.log(e.target.value)
         setNewReview({
             ...newReview,
             [e.target.name]: e.target.value
         })
+        console.log(restaurantinfo)
     }
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log('submit new review!')
         console.log(newReview)
+        fetch(`http://localhost:9292/reviews/`, {
+            method:"POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(newReview)
+        })
+        .then(res => res.json())
+        .then(newReview => console.log(newReview))
     }
 
     return (
