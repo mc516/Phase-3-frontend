@@ -63,7 +63,7 @@ function RestaurantList() {
                 })
             }
 
-            {<button onClick={handleClick}>add new</button>}
+            {<button onClick={handleClick}>Add Restaurant</button>}
             { isClicked ? <NewRestaurant addRestaurant={addRestaurant}/> : null}
         </div>
     )

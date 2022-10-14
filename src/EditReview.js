@@ -6,7 +6,6 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
     const [newReview, setNewReview] = useState(review)
     
     function handleChange(e){
-        console.log(e.target.value)
         setNewReview({
             ...newReview,
             [e.target.name]: e.target.value
@@ -15,7 +14,6 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(newReview)
         fetch(`http://localhost:9292/reviews/${id}`, {
             method:'PATCH',
             headers: {
@@ -28,7 +26,7 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
         })
         .then(res => res.json())
         .then(updatedReview => {handleUpdateReview(updatedReview)})
-        
+
         setIsEdit(false)
     }
 

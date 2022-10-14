@@ -1,5 +1,6 @@
 import React from "react";
 import EditReview from "./EditReview"
+import NewReview from "./NewReview"
 import { useEffect, useState } from "react"
 
 function Reviews( {reviews, restaurantinfo, clients, handleUpdateReview} ) {
@@ -20,11 +21,10 @@ function Reviews( {reviews, restaurantinfo, clients, handleUpdateReview} ) {
     function handleReviewClick(e){
         e.preventDefault()
         console.log('add review click')
-        setIsReviewClicked(true)
+        setIsReviewClicked((isReviewClicked) => !isReviewClicked)
     }
     
     function handleEditClick(e){
-        console.log('edit clicked')
         setIsEdit((isEdit) => !isEdit)
     }
 
@@ -35,7 +35,7 @@ function Reviews( {reviews, restaurantinfo, clients, handleUpdateReview} ) {
     return (
         <div>
             <h3 className="reviews">Reviews</h3>
-            <button onClick={handleReviewClick}>Add review</button>
+          
             { 
                 reviewsToDisplay.map((review) => 
                     { return <ol key={review.id} className="reviews">
@@ -64,7 +64,10 @@ function Reviews( {reviews, restaurantinfo, clients, handleUpdateReview} ) {
                 )
                
             }
-            
+            <br></br>
+
+            {isReviewClicked ? <NewReview /> : null}
+            <button onClick={handleReviewClick}>Add review</button>
         
 
         
