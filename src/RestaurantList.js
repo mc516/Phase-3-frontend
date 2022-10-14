@@ -17,13 +17,9 @@ function RestaurantList() {
         fetch("http://localhost:9292/reviews")
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             setReviews(data)
         })
-
-        fetch("http://localhost:9292/clients")
-        .then(res => res.json())
-        .then(data => setClients(data))
-
       }, [])
 
     function handleClick(e) {
@@ -34,6 +30,10 @@ function RestaurantList() {
 
     function addRestaurant(NewRestaurant){
         setRestaurants([...restaurants, NewRestaurant])
+    }
+
+    function addReview(newReview) {
+        setReviews([[...reviews, newReview]])
     }
 
     function handleUpdateReview(updateReview) {
@@ -59,6 +59,7 @@ function RestaurantList() {
                     restaurantinfo={restaurant} 
                     clients={clients}
                     handleUpdateReview={handleUpdateReview}
+                    addReview={addReview}
                     />
                 })
             }
