@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handleDeleteReview} ) {
     const [isReviewClicked, setIsReviewClicked] = useState(false)
     const [isEdit, setIsEdit] = useState(false) 
+    const [isEditIndex, setIsEditIndex] = useState()
 
     const reviewsToDisplay = reviews.filter((review) => {return review.restaurant_id === restaurantinfo.id})
 
@@ -15,12 +16,14 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
         setIsReviewClicked((isReviewClicked) => !isReviewClicked)
     }
     
-    function handleEditClick(review){
+    function handleEditClick(review, index){
         console.log(review)
+        console.log(index)
+        setIsEditIndex(index)
         
         setIsEdit((isEdit) => !isEdit)
     }
-
+    console.log(isEditIndex)
     function handleDeleteClick(review){
         if (window.confirm('Are you sure you wish to delete this item?')) 
         console.log(review)
@@ -38,13 +41,13 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
             <h3 className="reviews">Reviews</h3>
           
             { 
-                reviewsToDisplay.map((review) => 
+                reviewsToDisplay.map((review, index) => 
                     { 
                         
                         return <ul key={review.id} className="reviews">
                             
                             <li>                        
-                                {isEdit ? (
+                                {index === isEditIndex && isEdit ? (
                                     <EditReview review={review} handleUpdateReview={handleUpdateReview}
                                     setIsEdit={setIsEdit}/>
                                 ) : (
@@ -56,7 +59,7 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
                                 )
                             }
                             
-                            <button onClick={() => handleEditClick(review)}>Edit</button>
+                            <button onClick={() => handleEditClick(review, index)}>Edit</button>
                             <button onClick={() => handleDeleteClick(review)}>Delete</button> 
 
                             </li>
