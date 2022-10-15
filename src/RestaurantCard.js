@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Reviews from "./Reviews"
 import { useState } from "react"
 
-function RestaurantCard( {restaurantinfo, reviews, clients, handleUpdateReview, addReview} ) {
+function RestaurantCard( {restaurantinfo, reviews, clients, handleUpdateReview, addReview, handleDeleteReview} ) {
     const {name, location} = restaurantinfo
    
     
@@ -16,7 +16,7 @@ function RestaurantCard( {restaurantinfo, reviews, clients, handleUpdateReview, 
             <div><h2>{name}</h2></div>
             <div><h3>{location}</h3></div>
 
-            {<Reviews reviews={reviews} restaurantinfo={restaurantinfo} clients={clients} handleUpdateReview={handleUpdateReview} addReview={addReview}/>}
+            {<Reviews reviews={reviews} restaurantinfo={restaurantinfo} clients={clients} handleUpdateReview={handleUpdateReview} addReview={addReview} handleDeleteReview={handleDeleteReview}/>}
 
             
 

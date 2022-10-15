@@ -3,9 +3,7 @@ import EditReview from "./EditReview"
 import NewReview from "./NewReview"
 import { useEffect, useState } from "react"
 
-function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview} ) {
-  
-
+function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handleDeleteReview} ) {
     const [isReviewClicked, setIsReviewClicked] = useState(false)
     const [isEdit, setIsEdit] = useState(false)
     
@@ -22,8 +20,15 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview} ) {
         setIsEdit((isEdit) => !isEdit)
     }
 
-    function handleDeleteClick(){
-        console.log('delete click')
+    function handleDeleteClick(review){
+        console.log(review)
+        console.log(review.id)
+        fetch(`http://localhost:9292/reviews/${review.id}`, {
+            method: "DELETE",
+        })
+
+        handleDeleteReview(review.id)
+
     }
 
     return (
@@ -49,7 +54,7 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview} ) {
                             }
                             
                             <button onClick={handleEditClick}>Edit</button>
-                            <button onClick={handleDeleteClick}>Delete</button> 
+                            <button onClick={() => handleDeleteClick(review)}>Delete</button> 
 
                             </li>
                         </ul> 

@@ -24,7 +24,6 @@ function RestaurantList() {
 
     function handleClick(e) {
         console.log('click')
-        // e.currentTarget.disabled = true
         setIsClicked((isClicked) => !isClicked)
     }
 
@@ -46,6 +45,11 @@ function RestaurantList() {
         });
         setReviews(updatedReviews)
     }
+
+    function handleDeleteReview(id) {
+        const updatedReviews = reviews.filter((review) => review.id !== id)
+        setReviews(updatedReviews)
+    }
         
    
     return (
@@ -58,6 +62,7 @@ function RestaurantList() {
                     reviews={reviews}
                     restaurantinfo={restaurant} 
                     handleUpdateReview={handleUpdateReview}
+                    handleDeleteReview={handleDeleteReview}
                     addReview={addReview}
                     />
                 })
