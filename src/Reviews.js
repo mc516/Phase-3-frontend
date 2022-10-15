@@ -5,8 +5,8 @@ import { useEffect, useState } from "react"
 
 function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handleDeleteReview} ) {
     const [isReviewClicked, setIsReviewClicked] = useState(false)
-    const [isEdit, setIsEdit] = useState(false)
-    
+    const [isEdit, setIsEdit] = useState(false) 
+
     const reviewsToDisplay = reviews.filter((review) => {return review.restaurant_id === restaurantinfo.id})
 
     function handleReviewClick(e){
@@ -16,10 +16,13 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
     }
     
     function handleEditClick(review){
+        console.log(review)
+        
         setIsEdit((isEdit) => !isEdit)
     }
 
     function handleDeleteClick(review){
+        if (window.confirm('Are you sure you wish to delete this item?')) 
         console.log(review)
         console.log(review.id)
         fetch(`http://localhost:9292/reviews/${review.id}`, {
@@ -37,6 +40,7 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
             { 
                 reviewsToDisplay.map((review) => 
                     { 
+                        
                         return <ul key={review.id} className="reviews">
                             
                             <li>                        
@@ -52,7 +56,7 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
                                 )
                             }
                             
-                            <button onClick={handleEditClick}>Edit</button>
+                            <button onClick={() => handleEditClick(review)}>Edit</button>
                             <button onClick={() => handleDeleteClick(review)}>Delete</button> 
 
                             </li>
