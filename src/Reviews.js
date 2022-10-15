@@ -15,8 +15,7 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
         setIsReviewClicked((isReviewClicked) => !isReviewClicked)
     }
     
-    function handleEditClick(){
-        console.log(isEdit)
+    function handleEditClick(review){
         setIsEdit((isEdit) => !isEdit)
     }
 
