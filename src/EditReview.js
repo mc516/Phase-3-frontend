@@ -35,6 +35,7 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
     return (
         <div className="edit-review" onSubmit={handleSubmit}>
             <form>
+                {<strong><p>{review.client.name} says:</p></strong>}
                 <input
                     type="text"
                     name="rating"
