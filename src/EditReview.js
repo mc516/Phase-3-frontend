@@ -13,7 +13,7 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
     }
 
     function handleSubmit(e){
-        e.preventDefault()
+        // e.preventDefault()
         fetch(`http://localhost:9292/reviews/${id}`, {
             method:'PATCH',
             headers: {
@@ -27,7 +27,7 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
         .then(res => res.json())
         .then(updatedReview => {handleUpdateReview(updatedReview)})
 
-        setIsEdit(false)
+        // setIsEdit(false)
     }
 
    
