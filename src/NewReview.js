@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from "react"
 
-function NewReview({restaurantinfo, addReview, setIsEdit}) {
+function NewReview({restaurantinfo, addReview, setIsReviewClicked, setIsEdit}) {
     const {id} = restaurantinfo
 
     const [newReview, setNewReview] = useState({
@@ -16,11 +16,10 @@ function NewReview({restaurantinfo, addReview, setIsEdit}) {
             ...newReview,
             [e.target.name]: e.target.value
         })
-        console.log(restaurantinfo)
     }
 
     function handleSubmit(e) {
-        
+        // e.preventDefault()
         console.log('submit new review!')
         console.log(newReview)
         fetch(`http://localhost:9292/reviews/`, {
@@ -29,12 +28,15 @@ function NewReview({restaurantinfo, addReview, setIsEdit}) {
                 "content-type": "application/json"
             },
             body: JSON.stringify(newReview)
-        })
+        }) 
         .then(res => res.json())
         .then(newReview => {
             console.log(newReview)
             addReview(newReview)  
         })
+        // setIsReviewClicked(false)
+        setIsEdit(false)
+
     }
 
     return (

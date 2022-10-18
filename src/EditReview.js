@@ -28,6 +28,8 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
         .then(updatedReview => {handleUpdateReview(updatedReview)})
 
         // setIsEdit(false)
+
+        //No errors in edit after removing preventDefault and setIsEdit(false)**
     }
 
    

@@ -11,7 +11,7 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
     const reviewsToDisplay = reviews.filter((review) => {return review.restaurant_id === restaurantinfo.id})
 
     function handleReviewClick(e){
-        e.preventDefault()
+       
         console.log('add review click')
         setIsReviewClicked((isReviewClicked) => !isReviewClicked)
     }
@@ -23,30 +23,25 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
         
         setIsEdit((isEdit) => !isEdit)
     }
-    console.log(isEditIndex)
+
     function handleDeleteClick(review){
-        if (window.confirm('Are you sure you wish to delete this item?')) 
-        console.log(review)
-        console.log(review.id)
-        fetch(`http://localhost:9292/reviews/${review.id}`, {
-            method: "DELETE",
-        })
+        if (window.confirm('Are you sure you wish to delete this item?')) {
+            fetch(`http://localhost:9292/reviews/${review.id}`, {
+                method: "DELETE",
+            })
 
-        handleDeleteReview(review.id)
-
+            handleDeleteReview(review.id)
+        }
     }
-
+    console.log(reviewsToDisplay)
     return (
         <div>
-            <h3 className="reviews">Reviews</h3>
-          
-            { 
+            <h3 className="reviews">Reviews</h3>  
+            {         
                 reviewsToDisplay.map((review, index) => 
-                    { 
-                        
-                        return <ul key={review.id} className="reviews">
-                            
-                            <li>                        
+                    {                   
+                        return <ul key={review.id} className="reviews"> 
+                           <li>                        
                                 {index === isEditIndex && isEdit ? (
                                     <EditReview review={review} handleUpdateReview={handleUpdateReview}
                                     setIsEdit={setIsEdit}/>
@@ -72,7 +67,7 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
             <br></br>
 
             {isReviewClicked ? 
-                <NewReview restaurantinfo={restaurantinfo} addReview={addReview} setIsEdit={setIsEdit}/> 
+                <NewReview restaurantinfo={restaurantinfo} addReview={addReview} setIsReviewClicked={setIsReviewClicked} setIsEdit={setIsEdit}/> 
                 : null}
             <button onClick={handleReviewClick}>Add review</button>
         

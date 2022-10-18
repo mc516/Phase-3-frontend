@@ -6,7 +6,6 @@ import { useState, useEffect} from 'react'
 function RestaurantList() {
     const [restaurants, setRestaurants] = useState([])
     const [reviews, setReviews] = useState([])
-    
     const [isClicked, setIsClicked] = useState(false)
 
     useEffect(() => {
@@ -32,7 +31,7 @@ function RestaurantList() {
     }
 
     function addReview(newReview) {
-        setReviews([[...reviews, newReview]])
+        setReviews([...reviews, newReview])
     }
 
     function handleUpdateReview(updateReview) {
