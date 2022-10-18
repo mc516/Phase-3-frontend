@@ -19,7 +19,6 @@ function NewReview({restaurantinfo, addReview, setIsReviewClicked, setIsEdit}) {
     }
 
     function handleSubmit(e) {
-        // e.preventDefault()
         console.log('submit new review!')
         console.log(newReview)
         fetch(`http://localhost:9292/reviews/`, {
@@ -34,8 +33,7 @@ function NewReview({restaurantinfo, addReview, setIsReviewClicked, setIsEdit}) {
             console.log(newReview)
             addReview(newReview)  
         })
-        // setIsReviewClicked(false)
-        setIsEdit(false)
+        // setIsEdit(false)
 
     }
 

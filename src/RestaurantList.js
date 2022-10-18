@@ -49,6 +49,11 @@ function RestaurantList() {
         const updatedReviews = reviews.filter((review) => review.id !== id)
         setReviews(updatedReviews)
     }
+
+    function handleDeleteRestaurant(id) {
+        const updatedRestaurants = restaurants.filter((restaurant) => restaurant.id !== id)
+        setRestaurants(updatedRestaurants)
+    }
         
    
     return (
@@ -62,6 +67,7 @@ function RestaurantList() {
                     restaurantinfo={restaurant} 
                     handleUpdateReview={handleUpdateReview}
                     handleDeleteReview={handleDeleteReview}
+                    handleDeleteRestaurant={handleDeleteRestaurant}
                     addReview={addReview}
                     />
                 })

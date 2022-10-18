@@ -32,3 +32,11 @@ body {
   padding-top: 30px;
   list-style-type: none;
 }
+
+.restarurant-delete {
+    margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    bottom:0;
+    right:0;
+}

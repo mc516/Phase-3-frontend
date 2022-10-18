@@ -12,8 +12,7 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
         })
     }
 
-    function handleSubmit(e){
-        // e.preventDefault()
+    function handleSubmit(){
         fetch(`http://localhost:9292/reviews/${id}`, {
             method:'PATCH',
             headers: {
@@ -25,11 +24,7 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
             })
         })
         .then(res => res.json())
-        .then(updatedReview => {handleUpdateReview(updatedReview)})
-
-        // setIsEdit(false)
-
-        //No errors in edit after removing preventDefault and setIsEdit(false)**
+        .then(updatedReview => {handleUpdateReview(updatedReview)})    
     }
 
    
@@ -56,9 +51,7 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
 
                 <input type="submit" value="save"/>
             </form>
-        </div>
-     
-        
+        </div>           
     )
 }
 
