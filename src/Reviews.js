@@ -11,16 +11,11 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
     const reviewsToDisplay = reviews.filter((review) => {return review.restaurant_id === restaurantinfo.id})
 
     function handleReviewClick(e){
-       
-        console.log('add review click')
         setIsReviewClicked((isReviewClicked) => !isReviewClicked)
     }
     
     function handleEditClick(review, index){
-        console.log(review)
-        console.log(index)
-        setIsEditIndex(index)
-        
+        setIsEditIndex(index)    
         setIsEdit((isEdit) => !isEdit)
     }
 
@@ -29,11 +24,10 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
             fetch(`http://localhost:9292/reviews/${review.id}`, {
                 method: "DELETE",
             })
-
             handleDeleteReview(review.id)
         }
     }
-    console.log(reviewsToDisplay)
+    
     return (
         <div>
             <h3 className="reviews">Reviews</h3>  
@@ -52,14 +46,11 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
                                         <p>{review.comment}</p>
                                     </span>
                                 )
-                            }
-                            
+                            }                          
                             <button onClick={() => handleEditClick(review, index)}>Edit</button>
                             <button onClick={() => handleDeleteClick(review)}>Delete</button> 
-
                             </li>
-                        </ul> 
-                       
+                        </ul>                       
                     }
                 )
                
@@ -70,14 +61,7 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
                 <NewReview restaurantinfo={restaurantinfo} addReview={addReview} setIsReviewClicked={setIsReviewClicked} setIsEdit={setIsEdit}/> 
                 : null}
             <button onClick={handleReviewClick}>Add review</button>
-        
-
-        
-
-
-        </div>
-        
-        
+        </div>                
     )
 }
 

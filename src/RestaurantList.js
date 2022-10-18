@@ -16,7 +16,6 @@ function RestaurantList() {
         fetch("http://localhost:9292/reviews")
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setReviews(data)
         })
       }, [])
@@ -53,13 +52,11 @@ function RestaurantList() {
     function handleDeleteRestaurant(id) {
         const updatedRestaurants = restaurants.filter((restaurant) => restaurant.id !== id)
         setRestaurants(updatedRestaurants)
-    }
-        
+    }       
    
     return (
         <div>
-            <h1>Restaurants</h1>
-            
+            <h1>Restaurants</h1>         
             { restaurants.map( restaurant => { 
                 return <RestaurantCard 
                     key={restaurant.id}
@@ -72,7 +69,6 @@ function RestaurantList() {
                     />
                 })
             }
-
             {<button onClick={handleClick}>Add Restaurant</button>}
             { isClicked ? <NewRestaurant addRestaurant={addRestaurant}/> : null}
         </div>

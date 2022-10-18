@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Reviews from "./Reviews"
-import { useState } from "react"
 
 function RestaurantCard( {restaurantinfo, reviews, clients, handleUpdateReview, addReview, handleDeleteReview, handleDeleteRestaurant} ) {
 
@@ -11,12 +10,8 @@ function RestaurantCard( {restaurantinfo, reviews, clients, handleUpdateReview, 
         fetch(`http://localhost:9292/restaurants/${id}`, {
             method:'DELETE'
         })
-
         handleDeleteRestaurant(id)
-
-    }
-        
-    
+    }         
 
     return (
         <div className="restaurant-card">
@@ -26,13 +21,10 @@ function RestaurantCard( {restaurantinfo, reviews, clients, handleUpdateReview, 
             />
             <div><h2>{name}</h2></div>
             <div><h3>{location}</h3></div>
-
             { 
                <Reviews reviews={reviews} restaurantinfo={restaurantinfo} clients={clients} handleUpdateReview={handleUpdateReview} addReview={addReview} handleDeleteReview={handleDeleteReview}/> 
             }
-
             <button className="restarurant-delete" onClick={handleDeleteClick}>Delete</button>
-
         </div>     
     )
 }

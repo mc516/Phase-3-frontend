@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from "react"
 
-function NewReview({restaurantinfo, addReview, setIsReviewClicked, setIsEdit}) {
+function NewReview({restaurantinfo, addReview}) {
     const {id} = restaurantinfo
 
     const [newReview, setNewReview] = useState({
@@ -18,9 +18,7 @@ function NewReview({restaurantinfo, addReview, setIsReviewClicked, setIsEdit}) {
         })
     }
 
-    function handleSubmit(e) {
-        console.log('submit new review!')
-        console.log(newReview)
+    function handleSubmit() {
         fetch(`http://localhost:9292/reviews/`, {
             method:"POST",
             headers: {
@@ -33,8 +31,6 @@ function NewReview({restaurantinfo, addReview, setIsReviewClicked, setIsEdit}) {
             console.log(newReview)
             addReview(newReview)  
         })
-        // setIsEdit(false)
-
     }
 
     return (

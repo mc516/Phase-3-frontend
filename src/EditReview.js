@@ -27,8 +27,6 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
         .then(updatedReview => {handleUpdateReview(updatedReview)})    
     }
 
-   
-
     return (
         <div className="edit-review" onSubmit={handleSubmit}>
             <form>
@@ -48,7 +46,6 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
                     value={newReview.comment}
                     onChange={handleChange}
                 />
-
                 <input type="submit" value="save"/>
             </form>
         </div>           
