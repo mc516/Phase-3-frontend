@@ -10,6 +10,6 @@ Add, edit, or delete reviews and restaurants
 
 Note: 
 
-back-end: https://github.com/mc516/phase-3-sinatra-react-project
+Back-End: https://github.com/mc516/phase-3-sinatra-react-project
 
 

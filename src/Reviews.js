@@ -58,7 +58,7 @@ function Reviews( {reviews, restaurantinfo, handleUpdateReview, addReview, handl
             <br></br>
 
             {isReviewClicked ? 
-                <NewReview restaurantinfo={restaurantinfo} addReview={addReview} setIsReviewClicked={setIsReviewClicked} setIsEdit={setIsEdit}/> 
+                <NewReview restaurantinfo={restaurantinfo} addReview={addReview} setIsReviewClicked={setIsReviewClicked}/> 
                 : null}
             <button onClick={handleReviewClick}>Add review</button>
         </div>                
