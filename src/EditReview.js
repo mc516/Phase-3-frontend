@@ -12,7 +12,8 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
         })
     }
 
-    function handleSubmit(){
+    function handleSubmit(e){
+        // e.preventdefault()
         fetch(`http://localhost:9292/reviews/${id}`, {
             method:'PATCH',
             headers: {
@@ -24,12 +25,13 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
             })
         })
         .then(res => res.json())
-        .then(updatedReview => {handleUpdateReview(updatedReview)})    
+        .then(updatedReview => {handleUpdateReview(updatedReview)}) 
+        setIsEdit(false)   
     }
 
     return (
-        <div className="edit-review" onSubmit={handleSubmit}>
-            <form>
+        <div className="edit-review">
+            <form onSubmit={handleSubmit}>
                 {<strong><p>{review.client.name} says:</p></strong>}
                 <input
                     type="text"

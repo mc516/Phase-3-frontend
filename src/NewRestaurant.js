@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react"
 
-function NewRestaurant( {addRestaurant} ) {
+function NewRestaurant( {addRestaurant, setIsClicked} ) {
     const [restaurant, setRestaurant] = useState({
         name: "",
         location: "",
@@ -24,15 +24,16 @@ function NewRestaurant( {addRestaurant} ) {
             },
             body: JSON.stringify(restaurant)
         })
-            .then(res => res.json())
-            .then(NewRestaurant => {
-                console.log(NewRestaurant)
-                addRestaurant(NewRestaurant)
-                setRestaurant({
-                    name: "",
-                    location: "",
-                })
+        .then(res => res.json())
+        .then(NewRestaurant => {
+            console.log(NewRestaurant)
+            addRestaurant(NewRestaurant)
+            setRestaurant({
+                name: "",
+                location: "",
             })
+        })
+        setIsClicked(false)
     }
 
     return (
