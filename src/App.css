@@ -13,7 +13,12 @@ body {
   text-align: center;
   background-color: white;
   padding-bottom: 100px;
- 
+}
+
+.restaurant-image {
+  position: relative;
+  width: 30%;
+  height: 30%;
 }
 
 .restaurant-card, .form {
