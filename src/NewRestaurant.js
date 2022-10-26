@@ -25,7 +25,6 @@ function NewRestaurant( {addRestaurant, setIsClicked} ) {
         })
         .then(res => res.json())
         .then(NewRestaurant => {
-            console.log(NewRestaurant)
             addRestaurant(NewRestaurant)
             setRestaurant({
                 name: "",

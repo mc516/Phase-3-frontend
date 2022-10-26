@@ -6,7 +6,6 @@ function RestaurantCard( {restaurantinfo, reviews, clients, handleUpdateReview, 
     const {name, location, id} = restaurantinfo
 
     function handleDeleteClick() {
-        console.log(`click ${id}`)
         fetch(`http://localhost:9292/restaurants/${id}`, {
             method:'DELETE'
         })
