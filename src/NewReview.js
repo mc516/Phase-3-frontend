@@ -42,6 +42,7 @@ function NewReview({restaurantinfo, addReview, setIsReviewClicked}) {
                 <input 
                     type="text"
                     name="name"
+                    autoComplete="off"
                     value={newReview.name}
                     onChange={handleChange}
                 />
@@ -66,6 +67,7 @@ function NewReview({restaurantinfo, addReview, setIsReviewClicked}) {
                 <input 
                     type="text"
                     name="comment"
+                    autoComplete="off"
                     value={newReview.comment}
                     onChange={handleChange}
                 />

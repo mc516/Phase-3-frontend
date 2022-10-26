@@ -21,7 +21,6 @@ function RestaurantList() {
       }, [])
 
     function handleClick(e) {
-        console.log('click')
         setIsClicked((isClicked) => !isClicked)
     }
 

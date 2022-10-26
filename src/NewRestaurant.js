@@ -16,7 +16,6 @@ function NewRestaurant( {addRestaurant, setIsClicked} ) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(restaurant)
         fetch("http://localhost:9292/restaurants", {
             method: "POST",
             headers: {
@@ -40,7 +39,7 @@ function NewRestaurant( {addRestaurant, setIsClicked} ) {
         <div>
             <form className="form" onSubmit={handleSubmit}>
                 <img  
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_ZB1r0oUYrLuIYDFCt_yLMqFnC3Lh2PDYsw&usqp=CAU"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_ZB1r0oUYrLuIYDFCt_yLMqFnC3Lh2PDYsw&usqp=CAU" alt="fork and knives"
                  />
                  <br></br>
 
@@ -48,6 +47,7 @@ function NewRestaurant( {addRestaurant, setIsClicked} ) {
                 <input 
                     id="name"
                     type="text"
+                    autoComplete="off"
                     value={restaurant.name}
                     onChange={handleChange}
                 />
@@ -56,6 +56,7 @@ function NewRestaurant( {addRestaurant, setIsClicked} ) {
                 <input 
                     id="location"
                     type="text"
+                    autoComplete="off"
                     value={restaurant.location}
                     onChange={handleChange}
                 />

@@ -39,8 +39,10 @@ function EditReview({review, handleUpdateReview, setIsEdit}) {
                     autoComplete="off"
                     value={newReview.rating}
                     onChange={handleChange}
-                />
+                /> / 5
+
                 <br></br>
+                
                 <input 
                     type="text"
                     name="comment"
